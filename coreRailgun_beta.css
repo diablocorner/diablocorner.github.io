@@ -331,7 +331,7 @@ hmmm
 /*-------homepage*/
 /*background*/
 #ss_background {
-	background: url(/extensions/img/mainWall_berserker.png);
+	background: url(https://cdn.discordapp.com/attachments/873390285911121942/873454297856213032/mainWall_berserker.png);
 	background-repeat: no-repeat;
     background-size: cover;
 }
@@ -359,7 +359,7 @@ header.weapon-select weapon-select--title pause-bg roundme_sm {
 }
 
 #gameDescription{
-    background:url(/extensions/img/mainWall_D.png)
+    background:url(https://cdn.discordapp.com/attachments/873390285911121942/873454297856213032/mainWall_berserker.png)
 }
 
 #gameDescription li{
