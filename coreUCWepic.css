@@ -1,0 +1,929 @@
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    --ss-header-height: 10em;
+    --ss-footer-height: 4em;
+    --ss-main-width: 90em;
+    --ss-min-width: 68em;
+    --ss-space-xxl: 2.3em;
+    --ss-space-xl: 1.5em;
+    --ss-space-lg: 1em;
+    --ss-space-md: calc(var(--ss-space-lg)/2);
+    --ss-space-sm: calc(var(--ss-space-md)/1.5);
+    --ss-space-xs: calc(var(--ss-space-sm)/2);
+    --ss-space-micro: calc(var(--ss-space-xs)/2);
+    --ss-transparent: #00000000;
+    --ss-black: #000;
+    --ss-white: #FFFFFF;
+    --ss-offwhite: #FFF3E4;
+    --ss-yellow0: #F7FFC1;
+    --ss-yellow: #FAF179;
+    --ss-yolk0: #f1c59a;
+    --ss-yolk: #F79520;
+    --ss-yolk2: #d97611;
+    --ss-red0: #e29092;
+    --ss-red: #ff0000;
+    --ss-red2: #801919;
+    --ss-red-bright: #EF3C39;
+    --ss-pink: #EC008C;
+    --ss-pink1: #b9006e;
+    --ss-pink-light: #ff3aaf;
+    --ss-brown: #924e0c;
+    --ss-blue00: #abe3f6;
+    --ss-blue0: #c8edf8;
+    --ss-blue1: #95E2FE;
+    --ss-blue2: #FF4668;
+    --ss-blue3: #FF0000;
+    --ss-blue4: #FF4668;
+    --ss-blue5: #0a5771;
+    --ss-green0: #87ddbb;
+    --ss-green1: #3ebe8d;
+    --ss-green2: #2a7256;
+    --ss-orange1: #F79520;
+    --ss-vip-gold: linear-gradient(to right, #D1A943, #CFCDAF, #CC8630, #D1AA44, #CC8630);
+    --ss-gold: #D1AA44;
+    --ss-clear: rgba(255, 255, 255, 0);
+    --ss-blue2clear: rgba(94, 186, 217, 0);
+    --ss-shadow: rgba(0,0,0,0.4);
+    --ss-blueshadow: #0a577187;
+    --ss-darkoverlay: rgba(0, 0, 0, 0.8);
+    --ss-darkoverlay2: rgba(0, 0, 0, 0.2);
+
+    /*epic red edition*/
+    --ss-ered: #6C2A2E;
+    --ss-ered2: #7F2334;/*font_dark*/
+    --ss-ered3: #BE3C55;/*weapon slot+ setting background*/
+    --ss-ered4: #CB3853;/*border*/
+    --ss-ered5: #FF4668;/*font*/
+    --ss-ered6: #FF7646;
+
+}
+
+
+
+/* 
+hmmm
+我就爛，懶得改 :)
+
+#logo {
+  background-image: url('');
+  background-position: center;
+  background-repeat: no-repeat;
+	width: 100%;
+  background-size: 9%;
+  z-index: 5;
+	min-width: var(--ss-min-width);
+	height: var(--ss-header-height);
+	position: absolute;
+	text-align: center;
+	top: 5em;
+	left: 0;
+	margin: 0 auto;
+	pointer-events: none;
+}
+
+#logo img {
+  display: none;
+	height: 100%;
+	pointer-events: none;
+}
+*/
+
+
+
+/*--------------aim system & weapon*/
+/*-------scope*/
+#maskmiddle {
+    background: url("/extensions/img/scopeImg.png") center center no-repeat;
+    background-size: contain;
+    width: 100vh;
+    height: 100vh;
+}
+
+/*-------crosshair*/
+.crosshair {
+	position: absolute;
+	transform-origin: 50% top;
+	top: 50%;
+	border: solid 0.05em var(--ss-white);
+	height: 0.8em;
+	margin-bottom: 0.12em;
+	opacity: 0.7;
+
+	left: calc(50% - 0.15em);
+	background: #91315F;
+	width: 0.3em;
+}
+
+.crosshair.normal {
+    border: solid 0.05em var(--ss-white);
+	left: calc(50% - 0.15em);
+	background: #91315F;
+	width: 0.3em;
+}
+
+.crosshair.powerful {
+    left: calc(50% - 0.25em);
+	background: red;
+	width: 0.5em;
+}
+
+/*just for aug*/
+#dotReticle {
+	position: absolute;
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
+	background: var(--ss-red);
+	width: 0.7em; height: 0.7em;
+	border-radius: 100%;
+}
+
+#shotReticleContainer {
+	position: absolute;
+	text-align: center;
+	left: 50%; top: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.7;
+	overflow-x: hidden;
+}
+
+#reticleContainer, #crosshairContainer {
+	overflow-x: hidden;
+	max-width: 90vw;
+}
+
+.shotReticle {
+	box-sizing: border-box;
+	position: absolute;
+	left: 50%;
+	width: 2.5em;
+	height: 100%;
+	transform-origin: center;
+	background: transparent;
+	border: solid;
+	border-left: solid transparent;
+	border-right: solid transparent;
+	border-radius: 1.25em 1.25em 1.25em 1.25em;
+}
+
+.shotReticle:nth-child(1n) {
+	transform: translateX(-50%) rotate(0deg);
+}
+
+.shotReticle:nth-child(2n) {
+	transform: translateX(-50%) rotate(90deg);
+}
+
+/*
+.shotReticle.fill {
+}
+
+.shotReticle.border {
+}
+*/
+
+.shotReticle.fill.normal {
+    border: solid 0.05em var(--ss-white);
+	border-color: #91315F;
+	border-left: solid transparent;
+	border-right: solid transparent;
+	border-width: 0.1em;
+	padding: 0.1em;
+}
+
+.shotReticle.fill.powerful {
+    border-color: red;
+	border-left: solid transparent;
+	border-right: solid transparent;
+	border-width: 0.3em;
+	padding: 0.1em;
+}
+
+.shotReticle.border.normal {
+    border: solid 0.05em var(--ss-white);
+	border-color: #91315F;
+	border-left: solid transparent;
+	border-right: solid transparent;
+	border-width: 0.2em;
+}
+
+.shotReticle.border.powerful {
+	border-color: red;
+	border-left: solid transparent;
+	border-right: solid transparent;
+	border-width: 0.4em;
+}
+
+/*just for rpg*/
+#readyBrackets.ready {
+	animation: armed 0.2s linear;
+	width: 4em; height: 4em;
+	border-color: rgb(0, 255, 0);
+}
+
+#readyBrackets.notReady {
+	animation: unarmed 0.2s linear;
+	width: 8em; height: 8em;
+	border-color: rgb(255, 0, 0);
+}
+
+/*-------weapon & shop*/
+/*shop item background*/
+#equip_grid .store_item {
+	/**/
+    background: url(/extensions/img/sideWall.png);
+	position: relative;
+	border: var(--ss-space-sm) solid var(--ss-blue4);
+	font-weight: bold;
+	margin: 0 0 var(--ss-space-sm) var(--ss-space-sm);
+	color: var(--ss-blue4);
+	width: 5.5em;
+	height: 5.5em;
+	text-align: center;
+	vertical-align: center;
+	padding: 0.5em;
+}
+
+/*equip window*/
+#equip_sidebox {
+    background-image: url(/extensions/img/sideWall.png);
+    border: var(--ss-space-sm) solid var(--ss-ered4);
+    min-width: 21em;
+}
+
+.weapon_img { 
+	box-sizing: border-box;
+	background: none;
+	height: 4em;
+	border: none;
+	margin: 0 -0.1em;
+}
+
+#item_grid {
+	position: relative;
+	padding: 0 0.5em var(--ss-space-md) 0;
+    background: none;
+}
+#equip_equippedslots .equip_item {
+	background: none;
+	width: 6em;
+	height: 6em;
+	margin: var(--ss-space-sm);
+	border: var(--ss-space-sm) solid var(--ss-ered4);
+    box-shadow: inset 0em 0em 1em var(--ss-ered5), inset 0em 0em 3em var(--ss-ered3);
+}
+
+.weapon_img:hover {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+#weapon_select .weapon_selected {
+    background: var(--ss-ered4);
+    border: none;
+}
+
+#equip_grid .store_item{
+	border: none;
+	background: var(--ss-ered2);
+	color: var(--ss-white);
+}
+
+#equip_grid .store_item:hover {
+    background: var(--ss-ered4);
+    border: none;
+}
+
+#equip_grid .highlight {
+    background:  var(--ss-ered4) !important;
+    border: none;
+}
+
+#equip_sidebox h3 {
+    color: var(--ss-ered5);
+}
+
+.weapon-select--title h1 {
+    color: var(--ss-ered5);
+    background: none;
+}
+
+.equip_color:hover {
+    background: var(--ss-ered2);
+}
+
+#equip_itemtype .selected {
+    border: var(--ss-space-sm) solid var(--ss-white) !important;
+    background-color: var(--ss-ered6);
+}
+
+#equip_equippedslots .equip_item:hover {
+    background: var(--ss-ered6);
+    border: var(--ss-space-sm) solid var(--ss-white);
+    box-shadow: inset 0em 0em 3em var(--ss-yolk0);
+}
+
+
+
+/*--------------theme setting*/
+/*-------homepage*/
+/*background*/
+#ss_background {
+	background: url(/extensions/img/mainWall.png);
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#load_screen {
+  background: url(/extensions/img/loadWall.jpg);
+}
+header.weapon-select weapon-select--title pause-bg roundme_sm {
+   background-attachment: red;
+   color:red
+}
+
+.load_screen {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    background-image: url(/extensions/img/loadWall.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#gameDescription{
+    background:url(/extensions/img/mainWall_D.jpg)
+}
+
+#gameDescription li{
+    color:var(--ss-white)
+}
+
+/*character_base*/
+.front_panel {
+	border: var(--ss-space-sm) solid var(--ss-ered4);
+	margin-top: 0.6em;
+	background-image: url(/extensions/img/frontPanelLeft.jpg);
+	padding: var(--ss-space-lg);
+	min-width: 21.2em;
+	max-width: 21.2em;
+  
+}
+
+#panel_front_play #event-notifications img {
+    width: auto;
+    height: 53px;
+    content: url(/extensions/img/archerLogo.png)
+}
+
+.media-tabs-content.front_panel {
+    background: url(/extensions/img/frontPanelRight.jpg) !important;
+    margin: 0 auto;
+    height: 15em;
+ 
+}
+
+.home-tab-scroll{
+    padding-right: var(--ss-space-sm);
+    width: 100%;
+    height: 10em;
+}
+.v_scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/*homepage_stats*/
+
+#stat_item {
+	flex: 0 0 48%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background: url(/extensions/img/statWall.jpg);
+	margin: 0 0 var(--ss-space-sm) 0;
+	color: var(--ss-white);
+	font-weight: bold;
+}
+
+#stat_item h4 {
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0.4em var(--ss-space-md);
+    padding: 0;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+}
+
+.stat_stat {
+    color: white;
+    margin-right: var(--ss-space-md);
+    font-size: 1.2em;
+}
+
+h3, .h3{
+	color: var(--ss-white)
+}
+
+h2, .h2{
+    color: var(--ss-ered5);
+}
+
+h4, .h4{
+    color: var(--ss-ered5);
+}
+
+p{
+    color:var(--ss-white)
+}
+
+.ss_bigtab.selected {
+    background: var(--ss-ered6);
+    color: var(--ss-white);
+    border-color: var(--ss-white);
+}
+
+.ss_bigtab{
+    color: var(--ss-ered5);
+}
+
+.ss_bigtab:hover {
+    color: var(--ss-ered6);
+}
+
+.shadow_blue4 {
+    text-shadow: var(--ss-space-xs) var(--ss-space-xs) var(--ss-ered2);
+}
+
+.btn_toggleoff:hover {
+    color: var(--ss-ered6) !important;
+}
+
+.single-egg-store-item{
+    box-shadow: none;
+}
+
+/*some little setting*/
+.ss_keybind {
+    border-radius: var(--ss-space-md);
+    border: none;
+    margin: 0 0 var(--ss-space-sm) 0;
+    padding: var(--ss-space-sm);
+    color: var(--ss-ered5);
+    background: var(--ss-white);
+    font-weight: bold;
+    width: 9em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ss_checkbox .checkmark:after {
+    left: 0.55em;
+    top: 0.2em;
+    width: 0.4em;
+    height: 1em;
+    border: solid var(--ss-ered6);
+    border-width: 0 0.4em 0.4em 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*
+#equip_sidebox h3 {
+    color: var(--ss-blue1);
+}
+*/
+
+.label {
+    display: inline;
+    color: var(--ss-ered5);
+    font-weight: bold;
+    margin-left: var(--ss-space-md);
+    font-size: 1em;
+}
+
+.bevel_blue, .bevel_blue:hover {
+	box-shadow:none;
+  	background: none;
+    border-color: var(--ss-ered4);
+}
+
+.btn_toggleon {
+    border-color: none !important;
+    color: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.btn_toggleoff {
+    color: var(--ss-ered5) !important;
+    text-shadow: none !important;
+}
+
+.ss_button {
+    border-radius: var(--ss-space-sm);
+    border: 0.2em solid var(--ss-ered4);
+    background: none;
+    color: var(--ss-white);
+    text-align: center;
+    font-weight: bold;
+    line-height: 1em;
+    padding: var(--ss-space-sm) var(--ss-space-lg);
+    box-shadow: 0.1em 0.1em 3px var(--ss-ered2);
+    margin: 0 0 var(--ss-space-md) 0;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.ss_smtab.selected {
+    background: var(--ss-ered5);
+    color: var(--ss-black);
+}
+
+.ss_smtab {
+    color: var(--ss-white);
+    display: block;
+    border: 0;
+    border-top-right-radius: var(--ss-space-md);
+    border-top-left-radius: var(--ss-space-md);
+    background: var(--ss-ered4);
+    padding: var(--ss-space-md) var(--ss-space-lg);
+    cursor: pointer;
+}
+
+.ss_field {
+    border-radius: var(--ss-space-sm);
+    border: 0.2em solid var(--ss-ered4);
+    margin: 0 0 var(--ss-space-md) 0;
+    padding: var(--ss-space-sm) var(--ss-space-md);
+    box-shadow: inset 3px 3px 10px var(--ss-ered3), 0.1em 0.1em 3px var(--ss-ered2);
+    background: var(--ss-white);
+    color: var(--ss-ered5) !important;
+    font-weight: bold;
+    min-height: 2.45em;
+}
+
+.ss_select {
+    border-radius: var(--ss-space-sm);
+    border: 0.2em solid var(--ss-ered4);
+    margin: 0 0 var(--ss-space-md) 0;
+    padding: var(--ss-space-sm);
+    box-shadow: inset 3px 3px 10px var(--ss-ered3), 0.1em 0.1em 3px var(--ss-ered2);
+    background: var(--ss-white);
+    color: var(--ss-ered5);
+    font-weight: bold;
+    min-height: 2.45em;
+}
+
+.serverPingWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10.75em;
+    margin: 0;
+    padding: var(--ss-space-xs) var(--ss-space-sm);
+    background: var(--ss-ered2);
+}
+
+.load_message {
+    color: var(--ss-ered5);
+    margin-top: 5em;
+    margin-bottom: 3.5em;
+}
+
+/*feedback*/
+#feedback_panel .ss_field {
+    color: var(--ss-ered5);
+}
+
+#feedback_panel p, #feedback_panel li {
+    color: var(--ss-ered5);
+}
+
+#feedback_panel hr {
+    border: none;
+    border-top: 2px solid var(--ss-ered5);
+}
+
+/*vip btn*/
+.btn_vip {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+
+.btn_vip img {
+    width: 1.6em;
+    margin-right: var(--ss-space-sm);
+}
+
+.vip-club-cta img {
+    margin-top: 1em;
+    min-width: 0;
+    max-width: 0;
+}
+
+/*eggcount*/
+.account_eggs {
+	display: flex;
+  	border: 0.2em solid var(--ss-ered4);
+	vertical-align: center;
+	height: 2.3em;
+	min-width: 6.4em;
+	background: none;
+	text-align: right;
+	padding: 0.05em var(--ss-space-lg) 0 var(--ss-space-md);
+	position: relative;
+}
+.egg_count {
+    width: auto;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--ss-white);
+}
+.egg_icon {
+    height: 1.6em;
+    margin: var(--ss-space-micro) var(--ss-space-sm) 0 0;
+    content: url("/extensions/img/goldenEgg.png") !important;
+}
+
+/*-------gamingpage*/
+/*fps and ping*/
+#readouts {
+	color: var(--ss-white)
+}
+
+/*event notificions & kill streak*/
+#game_screen #event-notifications img{
+    content: url("/extensions/img/archerLogo.png");
+}
+
+#best_streak_container h1 {
+    color: var(--ss-ered5) !important;
+    background-image: url(/extensions/img/killStreakEx.png);
+}
+
+
+/*player slot*/
+.playerSlot-player-is-me {
+	background: url(/extensions/img/playerWall.jpg) !important;
+	color: var(--ss-ered5);
+ 
+}
+.playerSlot-player-is-them {
+    background: none;
+}
+
+.playerSlot-player-is-me.playerSlot-me-red {
+    background: none;
+    color: #ff4f6f;
+}
+
+
+.playerSlot-player-is-me.playerSlot-me-blue {
+    background: none;
+    color: #abe3f6;
+}
+
+/*health*/
+#healthContainer {
+	position: absolute;
+	left: 50%; bottom: 1em;
+	transform: translateX(-50%);
+	display: inline-block;
+	width: 6em; height: 6em;
+	background: url(/extensions/img/healthWall.jpg);
+	border-radius: 50%;
+	text-align: center;
+}
+#healthHp {
+	font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: var(--ss-white);
+    font-size: 1.2em;
+    transform: translateY(-3.45em);
+}
+.healthBar {
+	transform-origin: center;
+	transform: rotate(90deg);
+	fill: transparent;
+	stroke: var(--ss-ered6);
+	stroke-width: 1em;
+	stroke-dasharray: 14.4513em;
+	transition: all 0.3s ease-in-out;
+}
+.healthYolk {
+	fill: var(--ss-ered6);
+}
+
+/*-------pupups*/
+/*pupup window setting*/
+.popup_window {
+	z-index: 2000;
+	position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: url(/extensions/img/pupupWall.jpg);
+    align-items: center;
+    padding: var(--ss-space-lg);
+    color: var(--ss-black);
+}
+
+.popup_lg {
+	background: none;
+	border: none;
+	padding: var(--ss-space-xxl);
+}
+
+/*pause menu*/
+.pause-bg {
+    background: none;
+    padding: var(--ss-space-md);
+    text-align: center;
+    flex: 1 0 auto;
+}
+
+#pausePopupInnards {
+    width: 100%;
+}
+
+.popup_lg h1 {
+    margin: 0 0 var(--ss-space-sm) 0;
+    padding: var(--ss-space-sm) var(--ss-space-md);
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--ss-ered5);
+    background: var(--ss-ered2);
+}
+
+.box_blue2 {
+    padding: var(--ss-space-lg);
+    background: url(/extensions/img/pupupWall.jpg);
+    border: 0.3em solid var(--ss-ered4);
+}
+
+.box_blue4 {
+    padding: var(--ss-space-lg);
+    background-color: var(--ss-ered2);
+    border: var(--ss-space-sm) solid var(--ss-ered4);
+    min-width: 14em;
+}
+
+.popup_lg {
+    background: var(--ss-space-sm);
+    border: var(--ss-space-sm);
+}
+
+.respawn-container {
+	position: relative;
+	background: none;
+	background-color: none;
+	display: none;
+    z-index: 0;
+}
+
+.popup_sm_content {
+    text-align: center;
+    padding: var(--ss-space-xl);
+    font-weight: bold;
+    max-width: 30em;
+    line-height: 1.2em;
+    color: var(--ss-white);
+}
+
+.popup_sm {
+    border: var(--ss-space-sm) solid var(--ss-ered4);
+    min-width: 20em;
+    font-weight: bold;
+}
+
+/*pupupAD*/
+.pauseAdPlacement.shellshockers-respawn-banner-2 {
+    min-width: auto;
+  display: none;
+}
+
+#pauseAdPlacement,
+.pauseAdPlacement {
+    position: relative;
+    z-index: 10;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    display: none;
+}
+
+#pauseAdPlacement iframe,
+.pauseAdPlacement iframe{
+    margin: 0 auto;
+  display: none;
+
+}
+
+.display-ad-container > div,
+.display-ad-container > img {
+    margin: 0 auto;
+  display: none;
+
+}
+.house-ad-small {
+    display: none;
+}
+
+.house-ad-wrap {
+    display: none;
+}
+
+.adBlockerVideo {
+  display: none;
+}
+
+/*youtube-twitch-news-hud*/
+.news_item, .stream_item, .ytube-item  {
+    background: none;
+    color: var(--ss-white);
+    text-align: left;
+    min-height: 4.7em;
+    margin: 0 0 var(--ss-space-sm) 0;
+    padding: var(--ss-space-sm);
+    display: flex;
+}
+
+.news_item:nth-child(odd), .stream_item:nth-child(odd) {
+    background: none;
+}
+/*----glow shit----------*/
+#stream_mask,.news_mask,.yt_mask {
+    position: absolute;
+    bottom: 0;
+    left: 0.25em;
+    height: 2em;
+    background: none;
+    width: 100%;
+    pointer-events: none;
+}
+
+#item_mask {
+    position: absolute;
+    bottom: 0.5em;
+    left: 1em;
+    height: 2em;
+    background: none;
+    width: 17.6em;
+    pointer-events: none;
+    z-index: 1;
+}
+/*-------ads*/
+#pausePopupInnards {
+    width: 100%;
+}
+
+#pauseAdPlacement,
+.pauseAdPlacement {
+    position: relative;
+    z-index: 10;
+    margin-right: auto;
+    margin-left: auto;
+    display: none;
+}
+
+.pauseAdPlacement.shellshockers-respawn-banner-2 {
+    min-width: auto;
+    display: none;
+}
+
+#pauseAdPlacement iframe,
+.pauseAdPlacement iframe{
+    margin: 0 auto;
+    display: none;
+}
+
+.display-ad-container > div,
+.display-ad-container > img {
+    margin: 0 auto;
+    display: none;
+
+}
+
+.house-ad-small {
+    display: none;
+}
+
+.house-ad-wrap {
+    display: none;
+}
+
+.adBlockerVideo {
+  display: none;
+}
+
