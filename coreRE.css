@@ -694,9 +694,16 @@ p{
     color: #abe3f6;
 }
 
+.redTeam {
+    color: var(--ss-white) !important;
+    background: none;
+    /* border: none; */
+}
+
 .blueTeam {
     color: var(--ss-white) !important;
-    background: #0B93BD;
+    background: none;
+    /* border: none; */
 }
 
 /*health*/
