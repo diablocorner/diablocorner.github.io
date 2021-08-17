@@ -806,6 +806,12 @@ p{
     font-weight: bold;
 }
 
+.btn_blue {
+    background: #0B93BD;
+    border: 0.2em solid var(--ss-blue5);
+    text-shadow: 0.1em 0.1em 20px var(--ss-blue5);
+}
+
 /*pupupAD*/
 .pauseAdPlacement.shellshockers-respawn-banner-2 {
     min-width: auto;
