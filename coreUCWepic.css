@@ -58,6 +58,7 @@
     --ss-ered5: #FF4668;/*font*/
     --ss-ered6: #FF7646;
 
+    --ss-vipUser: #ff2b55;
 }
 
 
@@ -106,20 +107,20 @@ hmmm
 	position: absolute;
 	transform-origin: 50% top;
 	top: 50%;
-	border: solid 0.05em var(--ss-white);
+	border: solid 0.05em black;
 	height: 0.8em;
 	margin-bottom: 0.12em;
 	opacity: 0.7;
 
 	left: calc(50% - 0.15em);
-	background: #91315F;
+	background: var(--ss-vipUser);
 	width: 0.3em;
 }
 
 .crosshair.normal {
-    border: solid 0.05em var(--ss-white);
+    border: solid 0.05em black;
 	left: calc(50% - 0.15em);
-	background: #91315F;
+	background: var(--ss-vipUser);
 	width: 0.3em;
 }
 
@@ -184,8 +185,8 @@ hmmm
 */
 
 .shotReticle.fill.normal {
-    border: solid 0.05em var(--ss-white);
-	border-color: #91315F;
+    border: solid 0.05em black;
+	border-color: var(--ss-vipUser);
 	border-left: solid transparent;
 	border-right: solid transparent;
 	border-width: 0.1em;
@@ -201,8 +202,8 @@ hmmm
 }
 
 .shotReticle.border.normal {
-    border: solid 0.05em var(--ss-white);
-	border-color: #91315F;
+    border: solid 0.05em black;
+	border-color: var(--ss-vipUser);
 	border-left: solid transparent;
 	border-right: solid transparent;
 	border-width: 0.2em;
