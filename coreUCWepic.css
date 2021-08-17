@@ -59,6 +59,7 @@
     --ss-ered6: #FF7646;
 
     --ss-vipUser: #ff2b55;
+
 }
 
 
@@ -653,7 +654,7 @@ p{
 .egg_icon {
     height: 1.6em;
     margin: var(--ss-space-micro) var(--ss-space-sm) 0 0;
-    content: url("https://cdn.discordapp.com/attachments/874154057994993734/874154464360153118/goldenEgg.png")) !important;
+    content: url("https://cdn.discordapp.com/attachments/874154057994993734/874154464360153118/goldenEgg.png") !important;
 }
 
 /*-------gamingpage*/
@@ -694,9 +695,16 @@ p{
     color: #abe3f6;
 }
 
+.redTeam {
+    color: var(--ss-white) !important;
+    background: none;
+    /* border: none; */
+}
+
 .blueTeam {
     color: var(--ss-white) !important;
-    background: #0B93BD;
+    background: none;
+    /* border: none; */
 }
 
 /*health*/
@@ -811,6 +819,7 @@ p{
     min-width: 20em;
     font-weight: bold;
 }
+
 
 /*pupupAD*/
 .pauseAdPlacement.shellshockers-respawn-banner-2 {
@@ -933,3 +942,6 @@ p{
   display: none;
 }
 
+#adunit{
+    display: none;
+}
