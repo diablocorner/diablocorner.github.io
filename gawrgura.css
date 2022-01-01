@@ -573,7 +573,7 @@ h3{
     border-radius: var(--ss-space-sm);
     border: 0.2em solid var(--ss-blue3);
     background: none;
-    color: var(--ss-white);
+    color: var(--ss-blue0);;
     text-align: center;
     font-weight: bold;
     line-height: 1em;
@@ -632,7 +632,15 @@ h3{
   display: none;
 }
 
-
+.no-stream {
+    min-height: 0;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    background: var(--ss-blue3);
+    padding: 0 0.5em;
+    color: white;
+}
 
 /*-------ads*/
 #pausePopupInnards {
