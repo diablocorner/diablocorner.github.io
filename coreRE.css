@@ -149,10 +149,10 @@ hmmm
 	overflow-x: hidden;
 }
 
-#reticleContainer, #crosshairContainer {
+/*#reticleContainer, #crosshairContainer {
 	overflow-x: hidden;
 	max-width: 90vw;
-}
+}*/
 
 .shotReticle {
 	box-sizing: border-box;
